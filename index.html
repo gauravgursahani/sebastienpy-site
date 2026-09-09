@@ -9,13 +9,13 @@
 <meta property="og:type" content="website">
 <meta property="og:title" content="Sébastien Py — Photographe de mariage à Lille">
 <meta property="og:description" content="Une photographie sensible, narrative et intemporelle. Lille, France & ailleurs.">
-<meta property="og:image" content="https://static.wixstatic.com/media/136c22_03a5908138b5471793337529bf7b33b7~mv2.jpg/v1/fit/w_1200,h_1200,q_85/file.jpg">
+<meta property="og:image" content="https://sebastienpy.com/images/hero.jpg">
 <meta property="og:locale" content="fr_FR">
 <meta property="og:locale:alternate" content="en_GB">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="theme-color" content="#FBF9F6">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%231F1C18'/%3E%3Ctext x='50' y='68' font-family='Georgia,serif' font-size='52' font-weight='300' fill='%23FBF9F6' text-anchor='middle'%3ESP%3C/text%3E%3C/svg%3E">
-<link rel="preload" as="image" href="https://static.wixstatic.com/media/136c22_03a5908138b5471793337529bf7b33b7~mv2.jpg/v1/fit/w_1800,h_2700,q_88/file.jpg">
+<link rel="preload" as="image" href="images/hero.jpg">
 <!--
   ══════════════════════════════════════════════════════════════════════════
   POLICES INTÉGRÉES — NE RIEN MODIFIER DANS CE BLOC
@@ -58,16 +58,17 @@
      LÉGALES        (clés lg.legalBody / lg.privacyBody). Obligatoire en
                     France pour un site professionnel — loi LCEN art. 6-III.
                     Le portrait et les avis Google sont déjà en place.
-  3. PHOTOS       → les images du portfolio pointent encore vers l'ancien
-                    site Wix.
-                    À remplacer par des exports perso (2000px de large
-                    minimum) une fois l'hébergement choisi.
+  3. PHOTOS       → les images sont désormais servies depuis le dossier
+                    images/ du site. Elles restent en basse définition
+                    (520 px environ) : quand Sébastien fournira des exports
+                    à 2000 px, il suffira d'écraser les fichiers du dossier
+                    en gardant les mêmes noms.
 
   RGPD : ce site ne dépose AUCUN cookie, n'utilise aucun outil de mesure et
   ne charge aucune ressource externe pour s'afficher (les polices sont
   intégrées à la page). Aucun bandeau de consentement n'est nécessaire.
-  Seul point restant : les photos du portfolio sont encore servies par Wix —
-  le point 3 ci-dessus règle aussi cela. Le portrait, lui, est déjà intégré.
+  Plus aucune ressource externe : polices et portrait intégrés au fichier,
+  photos servies depuis le site lui-même.
   ============================================================================
 -->
 
@@ -458,7 +459,7 @@ dialog.legal .x:hover{color:var(--ink)}
 <!-- ══════════════════════════ HERO ══════════════════════════ -->
 <div id="top"></div>
 <section class="hero">
-  <img src="https://static.wixstatic.com/media/136c22_03a5908138b5471793337529bf7b33b7~mv2.jpg/v1/fit/w_1800,h_2700,q_88/file.jpg" alt="">
+  <img src="images/hero.jpg" alt="">
   <div class="hero-in">
     <h1><span data-i18n="hero.a">Votre histoire</span><br><em data-i18n="hero.b">telle qu'elle</em> <span data-i18n="hero.c">s'est vécue</span></h1>
     <p data-i18n="hero.sub">Photographe de mariage — Lille, France &amp; ailleurs</p>
@@ -504,7 +505,7 @@ dialog.legal .x:hover{color:var(--ink)}
 
 <!-- ══════════════════════════ BANDEAU 1 ══════════════════════════ -->
 <section class="bleed quote">
-  <img loading="lazy" src="https://static.wixstatic.com/media/136c22_a770d78e14914e7aba19f23d313440fe~mv2.jpg" alt="">
+  <img loading="lazy" src="images/break-1.jpg" alt="">
   <div class="bq"><p data-i18n="bleed1">« Il n'a pas photographié notre mariage. Il l'a raconté. »</p></div>
 </section>
 
@@ -574,7 +575,7 @@ dialog.legal .x:hover{color:var(--ink)}
 
 <!-- ══════════════════════════ BANDEAU 2 ══════════════════════════ -->
 <section class="bleed">
-  <img loading="lazy" src="https://static.wixstatic.com/media/136c22_a3591ea1f10c44e9bafdf782518bc594~mv2.jpg" alt="">
+  <img loading="lazy" src="images/break-2.jpg" alt="">
 </section>
 
 <!-- ══════════════════════════ À PROPOS ══════════════════════════ -->
@@ -826,32 +827,36 @@ const CONFIG = {
       ratio : "p" = portrait (2:3)   |   "l" = paysage (3:2)
       cat   : mariage | editorial | couple | detail
    ════════════════════════════════════════════════════════════════════ */
-const W = id => `https://static.wixstatic.com/media/136c22_${id}~mv2.jpg`;
+// Les photos vivent maintenant dans le dossier images/ du dépôt (plus aucune
+// dépendance à l'ancien hébergement Wix). Pour remplacer une image par un
+// export haute définition : écraser le fichier images/gallery-XX.jpg, garder
+// le même nom, committer. Aucun changement de code n'est nécessaire.
+const W = n => `images/gallery-${String(n).padStart(2,"0")}.jpg`;
 const PHOTOS = [
-  {src:W("c9d2eac9ed8d486084668e1a8fdf7413"), cat:"editorial", r:"p"},
-  {src:W("899b705c71534cd98cb31180c41dc858"), cat:"editorial", r:"l"},
-  {src:W("2edcff9e18844d5eb1eff2e7511f61dc"), cat:"editorial", r:"p"},
-  {src:W("7da7c2f3b03c4739a82df848dd10276b"), cat:"mariage",   r:"l"},
-  {src:W("298c52a62c5e4895ad05f931fcb3065f"), cat:"mariage",   r:"p"},
-  {src:W("fad9975dbf9c4216843addbfef69b0bf"), cat:"mariage",   r:"p"},
-  {src:W("2487e5d2e20c4ef29e019a58a115e18f"), cat:"editorial", r:"p"},
-  {src:W("6b8b5e54edce476d84d56c8a50040ea1"), cat:"couple",    r:"l"},
-  {src:W("f69731da90fa4b779bdb0e5901a96bf4"), cat:"mariage",   r:"p"},
-  {src:W("9bf106c1878e4617885453ccaf5d2173"), cat:"detail",    r:"l"},
-  {src:W("17320e24bc204dbbb7bf1b09dd78833f"), cat:"editorial", r:"p"},
-  {src:W("fc70c7d8b1bf4c5c8798f5d87a5887cb"), cat:"mariage",   r:"l"},
-  {src:W("a1ac691ec2a04ddeadcd635bf4d086b6"), cat:"mariage",   r:"p"},
-  {src:W("2835002ed5494b38827bac6b2cccb9ca"), cat:"detail",    r:"p"},
-  {src:W("b2cbe66c904e4bb7ae1ebb5fca2d6171"), cat:"couple",    r:"l"},
-  {src:W("320a5f2fefc0491196ae536b3639dbda"), cat:"mariage",   r:"p"},
-  {src:W("67d70cd152e94289ac69e71a49396976"), cat:"detail",    r:"l"},
-  {src:W("fe095a57e5944359a9f1184b7d213b13"), cat:"couple",    r:"p"},
-  {src:W("5ce567c11d9b4907a98c58c4eb8f40c6"), cat:"mariage",   r:"l"},
-  {src:W("e807b76ef81245e890c0df15229a5ca0"), cat:"couple",    r:"p"},
-  {src:W("6f91463567624e179183ddbc093107b4"), cat:"detail",    r:"l"},
-  {src:W("114bb69974b5445fb9d22214633446bd"), cat:"detail",    r:"l"},
-  {src:W("b03c27f8a5ab458b925daaa81425e652"), cat:"mariage",   r:"l"},
-  {src:W("a3591ea1f10c44e9bafdf782518bc594"), cat:"couple",    r:"l"}
+  {src:W(1), cat:"editorial", r:"p"},
+  {src:W(2), cat:"editorial", r:"l"},
+  {src:W(3), cat:"editorial", r:"p"},
+  {src:W(4), cat:"mariage",   r:"l"},
+  {src:W(5), cat:"mariage",   r:"p"},
+  {src:W(6), cat:"mariage",   r:"p"},
+  {src:W(7), cat:"editorial", r:"p"},
+  {src:W(8), cat:"couple",    r:"l"},
+  {src:W(9), cat:"mariage",   r:"p"},
+  {src:W(10), cat:"detail",    r:"l"},
+  {src:W(11), cat:"editorial", r:"p"},
+  {src:W(12), cat:"mariage",   r:"l"},
+  {src:W(13), cat:"mariage",   r:"p"},
+  {src:W(14), cat:"detail",    r:"p"},
+  {src:W(15), cat:"couple",    r:"l"},
+  {src:W(16), cat:"mariage",   r:"p"},
+  {src:W(17), cat:"detail",    r:"l"},
+  {src:W(18), cat:"couple",    r:"p"},
+  {src:W(19), cat:"mariage",   r:"l"},
+  {src:W(20), cat:"couple",    r:"p"},
+  {src:W(21), cat:"detail",    r:"l"},
+  {src:W(22), cat:"detail",    r:"l"},
+  {src:W(23), cat:"mariage",   r:"l"},
+  {src:W(24), cat:"couple",    r:"l"}
 ];
 
 /* ════════════════════════════════════════════════════════════════════
@@ -1188,7 +1193,7 @@ setLang(q==="en" ? "en" : "fr");
 
 <script type="application/ld+json">
 {"@context":"https://schema.org","@type":"LocalBusiness","additionalType":"https://schema.org/ProfessionalService",
-"name":"Sébastien Py — Photographe de mariage","image":"https://static.wixstatic.com/media/136c22_03a5908138b5471793337529bf7b33b7~mv2.jpg",
+"name":"Sébastien Py — Photographe de mariage","image":"https://sebastienpy.com/images/hero.jpg",
 "telephone":"+33664983083","url":"https://www.sebastienpy.com/",
 "address":{"@type":"PostalAddress","addressLocality":"Lille","addressRegion":"Hauts-de-France","addressCountry":"FR"},
 "areaServed":["Lille","Hauts-de-France","Paris","Belgique","France"],
