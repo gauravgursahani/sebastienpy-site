@@ -1,0 +1,13 @@
+# Netlify configuration — sebastienpy.com
+# Static single-page site: no build step, the repo root is published as-is.
+
+[build]
+  publish = "."
+
+# Sensible defaults for a public marketing site.
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Content-Type-Options = "nosniff"
+    Referrer-Policy = "strict-origin-when-cross-origin"
+    Permissions-Policy = "geolocation=(), camera=(), microphone=()"
