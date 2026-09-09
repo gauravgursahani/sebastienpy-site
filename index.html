@@ -268,7 +268,11 @@ body.menu-open .burger span:nth-child(2){transform:translateY(-7px) rotate(-45de
 .about{display:grid;grid-template-columns:.85fr 1fr;gap:clamp(2.5rem,6vw,6rem);
   align-items:center}
 .about .photo{position:relative;background:var(--sand)}
-.about .photo img{width:100%;aspect-ratio:4/5;object-fit:cover;object-position:center}
+/* height:auto est INDISPENSABLE : l'attribut HTML height="1125" de la balise
+   <img> agit comme une hauteur fixe et neutralise aspect-ratio, ce qui
+   recadrait violemment le portrait dès que la colonne faisait moins de
+   900 px de large (donc sur tous les mobiles). */
+.about .photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center}
 .about p+p{margin-top:1.3rem}
 .about p{max-width:54ch}
 .about .lead{margin-bottom:1.8rem;max-width:26ch}
