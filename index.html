@@ -187,6 +187,10 @@ body.menu-open .burger span:nth-child(2){transform:translateY(-7px) rotate(-45de
   letter-spacing:-.01em;text-transform:uppercase;font-weight:300}
 .hero h1 em{font-style:italic;text-transform:lowercase;font-size:.72em;
   letter-spacing:.01em;opacity:.92}
+/* Demande de Sébastien (11/09/2026) : seule la 1re ligne du titre est en
+   capitales. La 2e ligne garde la casse du texte tel qu'il est écrit dans
+   le dictionnaire I18N — d'où text-transform:none plutôt que lowercase. */
+.hero h1 .lc{text-transform:none;font-size:.72em;letter-spacing:.01em;opacity:.92}
 .hero p{margin:2.1rem auto 0;max-width:54ch;text-wrap:balance;font-size:.75rem;font-weight:400;
   letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.82);line-height:2}
 .scrollcue{position:absolute;bottom:2.4rem;left:50%;transform:translateX(-50%);z-index:2;
@@ -467,7 +471,7 @@ dialog.legal .x:hover{color:var(--ink)}
 <section class="hero">
   <img src="images/hero.jpg" alt="">
   <div class="hero-in">
-    <h1><span data-i18n="hero.a">Votre histoire,</span><br><em data-i18n="hero.b">exactement comme</em> <span data-i18n="hero.c">vous l'avez vécue</span></h1>
+    <h1><span data-i18n="hero.a">Votre histoire,</span><br><em data-i18n="hero.b">exactement comme</em> <span class="lc" data-i18n="hero.c">vous l'avez vécue</span></h1>
     <p data-i18n="hero.sub">Photographe de mariage — Lille, France &amp; ailleurs</p>
   </div>
   <div class="scrollcue"></div>
@@ -482,8 +486,7 @@ dialog.legal .x:hover{color:var(--ink)}
 <section class="manifesto">
   <div class="wrap narrow rv">
     <p class="eyebrow" data-i18n="man.eyebrow">Bienvenue</p>
-    <p class="lead" data-i18n="man.lead">Bonjour, moi c'est Sébastien.</p>
-    <p data-i18n="man.p1">Photographe de mariage basé à Lille, j'accompagne les couples partout en France.</p>
+    <p class="lead" data-i18n="man.p1">Photographe de mariage basé à Lille, j'accompagne les couples partout en France.</p>
     <p data-i18n="man.p2">Mon approche&nbsp;? Un reportage photo discret et spontané pour immortaliser les rires, les regards complices et toute l'émotion brute de votre mariage.</p>
     <p class="sig">Sébastien</p>
   </div>
@@ -875,7 +878,6 @@ fr:{
  "hero.sub":"Photographe de mariage — Lille, France &amp; ailleurs",
  "strip":"Mariages · Élopements · Séances couple — Hauts-de-France, Paris, Belgique &amp; destinations",
  "man.eyebrow":"Bienvenue",
- "man.lead":"Bonjour, moi c'est Sébastien.",
  "man.p1":"Photographe de mariage basé à Lille, j'accompagne les couples partout en France.",
  "man.p2":"Mon approche&nbsp;? Un reportage photo discret et spontané pour immortaliser les rires, les regards complices et toute l'émotion brute de votre mariage.",
  "pf.eyebrow":"Portfolio","pf.title":"Quelques histoires",
@@ -953,7 +955,6 @@ en:{
  "hero.sub":"Wedding photographer — Lille, France &amp; beyond",
  "strip":"Weddings · Elopements · Couple sessions — Northern France, Paris, Belgium &amp; destinations",
  "man.eyebrow":"Welcome",
- "man.lead":"Hello — I'm Sébastien.",
  "man.p1":"A wedding photographer based in Lille, working with couples all over France.",
  "man.p2":"My approach? Quiet, unhurried reportage — the laughter, the knowing glances, and all the raw feeling of your wedding day.",
  "pf.eyebrow":"Portfolio","pf.title":"A few stories",
