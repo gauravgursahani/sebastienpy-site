@@ -209,8 +209,12 @@ body.menu-open .burger span:nth-child(2){transform:translateY(-7px) rotate(-45de
 .manifesto{text-align:center}
 .manifesto .lead{margin:0 auto 2.4rem;max-width:30ch}
 .manifesto p+p{margin-top:1.4rem}
-.sig{margin-top:3rem;font-family:var(--serif);font-style:italic;font-size:1.6rem;
-  color:var(--ink);opacity:.75}
+/* Demande de Sébastien (12/09/2026) : dans le bloc « Bienvenue », les tailles
+   de police doivent être cohérentes. Les deux paragraphes sont donc au même
+   corps que le reste du site, et la signature les rejoint — elle reste
+   identifiable par l'italique et la serif, pas par la taille. */
+.sig{margin-top:3rem;font-family:var(--serif);font-style:italic;
+  font-size:1.0625rem;line-height:1.75;color:var(--ink);opacity:.75}
 
 /* ═══════════════════════════ PORTFOLIO ═══════════════════════════ */
 .pf-head{display:flex;flex-wrap:wrap;align-items:flex-end;justify-content:space-between;
@@ -280,7 +284,11 @@ body.menu-open .burger span:nth-child(2){transform:translateY(-7px) rotate(-45de
    900 px de large (donc sur tous les mobiles). */
 .about .photo img{width:100%;height:auto;aspect-ratio:4/5;object-fit:cover;object-position:center}
 .about p+p{margin-top:1.3rem}
-.about p{max-width:54ch}
+/* Demande de Sébastien (12/09/2026) : texte justifié dans « À propos ».
+   hyphens:auto est indispensable en justifié sur colonne étroite, sinon
+   l'espacement entre les mots se creuse de façon disgracieuse sur mobile. */
+.about p{max-width:54ch;text-align:justify;hyphens:auto;-webkit-hyphens:auto}
+.about .lead{text-align:left;hyphens:manual}
 .about .lead{margin-bottom:1.8rem;max-width:26ch}
 .facts{margin-top:2.75rem;border-top:1px solid var(--hairline);padding-top:1.6rem;
   display:flex;flex-wrap:wrap;gap:2.5rem}
@@ -486,7 +494,7 @@ dialog.legal .x:hover{color:var(--ink)}
 <section class="manifesto">
   <div class="wrap narrow rv">
     <p class="eyebrow" data-i18n="man.eyebrow">Bienvenue</p>
-    <p class="lead" data-i18n="man.p1">Photographe de mariage basé à Lille, j'accompagne les couples partout en France.</p>
+    <p data-i18n="man.p1">Photographe de mariage basé à Lille, j'accompagne les couples partout en France.</p>
     <p data-i18n="man.p2">Mon approche&nbsp;? Un reportage photo discret et spontané pour immortaliser les rires, les regards complices et toute l'émotion brute de votre mariage.</p>
     <p class="sig">Sébastien</p>
   </div>
@@ -529,7 +537,7 @@ dialog.legal .x:hover{color:var(--ink)}
       <div class="pillar">
         <span>01</span>
         <h3 data-i18n="ap.1t">Sensible</h3>
-        <p data-i18n="ap.1p">Une présence discrète, jamais intrusive. Vous vivez votre journée&nbsp;; je m'occupe de la garder.</p>
+        <p data-i18n="ap.1p">Une présence discrète, jamais intrusive. Vous vivez votre journée&nbsp;; je m'occupe de la capturer.</p>
       </div>
       <div class="pillar">
         <span>02</span>
@@ -884,7 +892,7 @@ fr:{
  "pf.all":"Tout","pf.wed":"Mariage","pf.ed":"Éditorial","pf.cpl":"Couple","pf.det":"Détails",
  "bleed1":"« Il ne s'est pas contenté de prendre des photos, il a vraiment raconté notre journée. »",
  "ap.eyebrow":"L'approche","ap.title":"Ce qui compte vraiment dans ma façon de travailler",
- "ap.1t":"Sensible","ap.1p":"Une présence discrète, jamais intrusive. Vous vivez votre journée&nbsp;; je m'occupe de la garder.",
+ "ap.1t":"Sensible","ap.1p":"Une présence discrète, jamais intrusive. Vous vivez votre journée&nbsp;; je m'occupe de la capturer.",
  "ap.2t":"Narratif","ap.2p":"Raconter l'histoire entière, du calme du matin à la folie de la soirée.",
  "ap.3t":"Intemporel","ap.3p":"Un traitement naturel et fidèle à l'ambiance, sans retouches excessives.",
  "tm.eyebrow":"Leurs mots","tm.title":"Ils en parlent mieux que moi",
@@ -961,7 +969,7 @@ en:{
  "pf.all":"All","pf.wed":"Weddings","pf.ed":"Editorial","pf.cpl":"Couples","pf.det":"Details",
  "bleed1":"“He didn't just take photographs — he really told the story of our day.”",
  "ap.eyebrow":"The approach","ap.title":"What really matters in the way I work",
- "ap.1t":"Sensitive","ap.1p":"A quiet presence, never intrusive. You live your day — keeping it is my job.",
+ "ap.1t":"Sensitive","ap.1p":"A quiet presence, never intrusive. You live your day — capturing it is my job.",
  "ap.2t":"Narrative","ap.2p":"Telling the whole story — from the quiet of the morning to the madness of the evening.",
  "ap.3t":"Timeless","ap.3p":"Natural processing, faithful to the mood of the day, with no heavy-handed retouching.",
  "tm.eyebrow":"Kind words","tm.title":"They say it better than I do",
