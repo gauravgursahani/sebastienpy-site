@@ -1,52 +1,57 @@
 # sebastienpy.com
 
-One-page bilingual (FR / EN) site for Sébastien Py, wedding photographer in Lille.
+Site bilingue (FR / EN) de Sébastien Py, photographe de mariage à Lille.
+Live : https://sebastienpy.com — déployé par Netlify à chaque push sur `main`.
 
-Live: https://sebastienpy.com
+## Structure
 
-## How it works
+Le site tenait dans un seul fichier. Depuis l'ajout de la page portfolio il
+est découpé, pour que les deux pages partagent les mêmes styles et les mêmes
+textes au lieu de les dupliquer :
 
-The entire site is a single self-contained file: **`index.html`**.
-No build step, no framework, no dependencies. Fonts and Sébastien's portrait are
-embedded directly in the file, so the page contacts no third party in order to
-render — which is why it needs no cookie banner.
+| Fichier          | Rôle |
+|------------------|------|
+| `index.html`     | Accueil : hero, carrousel, approche, témoignages, à propos, prestations, FAQ, contact |
+| `portfolio.html` | Page dédiée : les 50 images en grille |
+| `site.css`       | **Tous** les styles + les polices encodées dans le fichier |
+| `site.js`        | **Tous** les textes (FR/EN), la bascule de langue, l'en-tête, la visionneuse, les mentions légales |
+| `images/`        | `hero`, `break-*`, `portrait`, et `pf-*` pour le portfolio |
 
-Pushing to `main` deploys automatically to Netlify.
+## Où modifier quoi
 
-## Editing
+**Les textes** → `site.js`, dictionnaire `I18N`. Une seule entrée par clé,
+en `fr` et en `en`. Les deux pages lisent le même dictionnaire : corriger une
+phrase ici la corrige partout. Ne jamais écrire un texte en dur dans le HTML.
 
-Everything an editor normally needs is near the bottom of `index.html`,
-in four clearly-commented blocks:
+**Le téléphone, l'Instagram, le lien des avis** → `site.js`, bloc `CONFIG`.
 
-| Block | What it holds |
-|---|---|
-| `CONFIG` | Instagram, WhatsApp number, phone, Google reviews link |
-| `PHOTOS` | The 24 portfolio images, each with a category and a 2:3 / 3:2 ratio |
-| `I18N`   | Every string on the page, in French and English |
-| Legal    | `lg.legalBody` / `lg.privacyBody` — mentions légales and privacy |
+**Les images du carrousel de l'accueil** → `index.html`, section `#portfolio`.
+Douze images choisies ; l'ordre est celui du HTML.
 
-French is always the default language. English is reachable via the FR|EN
-toggle or by appending `?lang=en` to any URL.
+**Les images du portfolio** → `portfolio.html`, div `.grid`.
 
-## Contact form
+### Ajouter une image
 
-Handled by **Netlify Forms**. The form is `name="contact"` with
-`data-netlify="true"`; Netlify detects it by parsing the HTML at deploy time.
+Chaque photo existe en deux tailles, générées depuis l'original :
 
-Two settings live in the Netlify dashboard, not in this repo:
+    images/pf-NOM.jpg      1800 px  → visionneuse et carrousel
+    images/pf-NOM-t.jpg     900 px  → vignette de la grille
 
-- **Forms → Enable form detection** (already on — must stay on)
-- **Forms → Notifications → Email notification** → the address that receives enquiries
+Le `style="background-image:url(data:…)"` sur chaque `<img>` est une
+micro-vignette de 20 px : elle occupe la place pendant le chargement pour
+éviter que la page ne sursaute. `width`/`height` et `aspect-ratio` jouent le
+même rôle — les garder cohérents avec l'image réelle.
 
-Submissions are stored in Netlify regardless, so nothing is lost if the email
-notification is ever misconfigured.
+## Réglages côté Netlify (déjà faits)
 
-## Still to do
+1. **Forms → Notifications** → e-mail de Sébastien à chaque demande.
+2. **Form detection** activée.
 
-- [ ] **Mentions légales** — search `À COMPLÉTER` in `index.html`: business
-      status, SIRET, and the host's name/address/phone. Legally required in
-      France for a professional site (LCEN art. 6-III).
-- [ ] **Portfolio images** are still served from the old Wix CDN
-      (`static.wixstatic.com`). They work today, but they will disappear the
-      day the Wix subscription lapses. Re-export at 2000px+ and commit them
-      into an `images/` folder, then update the `PHOTOS` array.
+## À faire
+
+- **Mentions légales** : le statut et le SIRET ont été retirés à la demande de
+  Sébastien (11/09/2026). La loi LCEN art. 6-III les rend obligatoires pour un
+  site professionnel — à rétablir dans `site.js` (`lg.legalBody`) dès que le
+  numéro est disponible.
+- **Images inutilisées** : `images/gallery-01…24.jpg` ne servent plus depuis le
+  passage au carrousel. À supprimer un jour, sans urgence.
