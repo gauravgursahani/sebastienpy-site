@@ -111,6 +111,10 @@ body.menu-open .burger span:nth-child(2){transform:translateY(-7px) rotate(-45de
   object-position:center 32%;
   animation:kb 22s var(--ease) forwards}
 @keyframes kb{from{transform:scale(1.07)}to{transform:scale(1)}}
+/* Nouvelle image hero (23/09/2026) : format paysage 3:2. Sur un écran plus
+   haut que large, un recadrage centré sort la mariée du cadre et laisse le
+   texte blanc sur le rideau clair. On décale donc le cadrage vers elle. */
+@media (max-aspect-ratio:1/1){.hero img{object-position:26% 50%}}
 .hero::after{content:"";position:absolute;inset:0;
   background:linear-gradient(180deg,rgba(20,17,14,.5) 0%,rgba(20,17,14,.12) 34%,rgba(20,17,14,.2) 66%,rgba(20,17,14,.58) 100%)}
 .hero-in{position:relative;z-index:2;text-align:center;color:#fff;padding-inline:var(--gut)}
